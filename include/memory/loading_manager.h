@@ -36,6 +36,17 @@ typedef struct LOADING : FILE_HANDLER
 	FILE_HANDLER::LOAD_FILE_CALLBACK* CALLBACK();
 };
 
-#endif 
+typedef struct PROCESS_CALLBACK
+{
+	typedef void ON_PROC_REQUEST_CALLBACK(void* USER_DATA);
+};
 
-#endif 
+#ifndef ASYNCHRONOUS
+#define ASYNCHRONOUS
+
+#define ADD_CALLBACK(void)(PROCESS_CALLBACK* PROC_CB = NULL);
+#define ADD_REQUEST(void)();
+
+#endif
+#endif
+#endif
