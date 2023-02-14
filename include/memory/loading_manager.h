@@ -27,6 +27,8 @@
 #define LOADING_DEFINES
 
 typedef U32* CEMENT_LIB_FILE_HANDLE; // NOT SURE WHAT THIS IS; SOME PREPRIATORY SHAR SOURCE LIBRARY RADICAL MUST HAVE USED
+typedef U32 REQUEST_HEAD;
+typedef U32 REQUEST_TAIL;
 
 typedef struct LOADING : FILE_HANDLER
 {
@@ -46,6 +48,10 @@ typedef struct PROCESS_CALLBACK
 
 #define ADD_CALLBACK(void)(PROCESS_CALLBACK* PROC_CB = NULL);
 #define ADD_REQUEST(void)();
+#define LOAD_SYNC(void)();
+#define IS_LOADING(bool);
+#define GET_REQUEST_HEAD(int) const { return REQUEST_HEAD; }
+#define GET_REQUEST_TAIL(int) const { return REQUEST_TAIL; }
 
 #endif
 #endif
