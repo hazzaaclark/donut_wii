@@ -38,21 +38,29 @@ typedef struct LOADING : FILE_HANDLER
 	FILE_HANDLER::LOAD_FILE_CALLBACK* CALLBACK();
 };
 
+typedef LOADING* SINGLETON;
+typedef LOADING& OPERATOR(const LOADING& LOADING_MANAGER);
+
 typedef struct PROCESS_CALLBACK
 {
 	typedef void ON_PROC_REQUEST_CALLBACK(void* USER_DATA);
 };
 
-#ifndef ASYNCHRONOUS
 #define ASYNCHRONOUS
-
 #define ADD_CALLBACK(void)(PROCESS_CALLBACK* PROC_CB = NULL);
-#define ADD_REQUEST(void)();
-#define LOAD_SYNC(void)();
+#define ADD_REQUEST(void)(FILE_HANDLE_ENUM HANDLER_TYPE, const char* FILENAME, const char* SECTION_NAME, PROCESS_CALLBACK* PROC_CB = NULL);
+#define LOAD_SYNC(void)(FILE_HANDLE_ENUM HANDLER_TYPE, const char* FILENAME, const char* SECTION_NAME = NULL);
 #define IS_LOADING(bool);
 #define GET_REQUEST_HEAD(int) const { return REQUEST_HEAD; }
 #define GET_REQUEST_TAIL(int) const { return REQUEST_TAIL; }
 
+#ifndef RAD_WIN32 // PREPRIATORY RADICAL LIBRARY DECLARATIVE
+#define RAD_WIN32
+
+typedef U32 GET_REQS_PROC();
+typedef void(*RESET_REQ_PROC);
+
 #endif
+
 #endif
 #endif
