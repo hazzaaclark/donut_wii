@@ -1,5 +1,8 @@
-OBJECTS = main.o
-NAME = DONUT_WII
+#------------------------
+.SUFFIXES:
+#------------------------
 
-build: $(OBJECTS)
-cc $(OBJECTS) -o $(NAME)
+BUILD       ?=       wii_release
+SOURCES     ?=       ../source
+INCLUDE     ?=       ../include
+NAME        ?=       DONUT_WII
