@@ -38,4 +38,15 @@ typedef int64_t S64;
 
 #endif 
 
+#ifndef MEMORY_UTILS
+#define MEMORY_UTILS
+
+typedef struct MEMORY_ALLOCATOR;
+typedef void(*MEMORY_INIT);
+typedef float FREE_MEMORY(MEMORY_ALLOCATOR* ALLOC);
+typedef size_t GET_FREE_MEMORY_PROF();
+typedef size_t GET_LARGEST_FREE_BLOCK();
+
 #endif 
+
+#endif
