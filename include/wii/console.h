@@ -16,13 +16,14 @@
 /* FROM THE WAY IN WHICH EACH RESPECTIVE CPU'S REGISTERS WORK */
 /* WITH PARSING INFORMATION */
 
-#ifndef CONSOLE
-#define CONSOLE
+#ifndef _CONSOLE_
+#define _CONSOLE_
 
 /* NESTED INCLUDES */
 
 #include "shar_memory.h"
 #include "console_memory.h"
+#include "loading_manager.h"
 
 /* FORWARD REFERENCES */
 
@@ -32,8 +33,26 @@
 #endif
 
 #ifndef SHAR_DEBUG
-struct DEBUG_CONSOLE;
-struct DEBUG_CONSOLE_CALLBACK;
+typedef struct DEBUG_CONSOLE;
+typedef struct DEBUG_CONSOLE_CALLBACK;
+#endif
+
+/* DATA INCLUDES */
+
+#include "common.h"
+
+#ifndef CONSOLE_DEFINES
+#define CONSOLE_DEFINES
+
+typedef struct CONSOLE : LOADING
+{
+	static CONSOLE* CREATE_INSTANCE();
+	static CONSOLE* GET_INSTANCE();
+	static CONSOLE* DESTROY_INSTANCE(void);
+};
+
+typedef void(*CONSOLE_FUNCTION)(int argc, char** argv);
+
 #endif
 
 #endif 
