@@ -60,6 +60,20 @@ typedef struct CONSOLE : LOADING
 	typedef bool ADD_FUNCTION(const char* NAME, CONSOLE_BOOL_FUNCTION* FUNCTION_PTR, U32 MIN_ARGS, U32 MAX_ARGS);
 	typedef bool ADD_ALIAS(const char* NAME, const char* FUNCTION_NAME, int argc, char** argv[]);
 	typedef void(*EXECUTE_CALLBACK_SYNC)(const char* FILE_NAME);
+	typedef bool EVALUATE_BUFFER(const char* STRING, const char* SOURCE_NAME);
+};
+
+typedef enum MAX_PROC
+{
+	MAX_STRING_LENGTH = 256,
+	MAX_FUNCTIONS = 256,
+	MAX_FUNCTION_NAME = 32,
+	MAX_HELP_LENGTH = 256,
+	MAX_ALIAS_NAME = 32,
+	MAX_ARGS = 16,
+	MAX_ARG_LENGTH = 64,
+	MAX_ALIASES = 32,
+	MAX_BUFFERS = 16
 };
 
 typedef struct SCRIPT_CALLBACK : CONSOLE
@@ -67,6 +81,20 @@ typedef struct SCRIPT_CALLBACK : CONSOLE
 	virtual void ON_EXECUTE(void* USER_DATA);
 	typedef void(*EXECUTE)(const char* FILE_NAME, SCRIPT_CALLBACK* CALLBACK, void* USER_DATA);
 };
+
+#endif
+
+/* PREPRIATORY RADICAL CONSOLE DEBUG SCHEMA */
+
+#ifndef RAD_DEBUG_WIN32
+#define RAD_DEBUG_WIN32
+
+typedef void(*ADD_DEBUG)();
+typedef void(*SET_DEBUG)();
+typedef int DEBUG_LINE;
+
+DEBUG_CONSOLE* RAD_DEBUG();
+DEBUG_CONSOLE_CALLBACK* RAD_CALLBACK();
 
 #endif
 #endif 
