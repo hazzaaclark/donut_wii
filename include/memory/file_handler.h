@@ -80,6 +80,12 @@ typedef struct RAD_DRIVE
 };
 
 typedef struct MEM_CARD_INFO;
+typedef enum FILE_PRIORITY
+{
+    NONE,
+    NORMAL,
+    MSP
+};
 
 #endif 
 
@@ -96,6 +102,10 @@ typedef struct MEM_CARD_INFO;
 
 #define FILENAME_MAX 256 const U32
 #define FILEDRIVE_MAX 16 const U32
+
+typedef void(*FILE_SET_ROOT_DIR)(const char* DRIVE, const char* ROOT_DIR);
+typedef void(*FILE_GET_ROOT_DIR)(const char* DRIVE, const char* ROOT_DIR);
+typedef void(*FILE_OPEN_ASYNC)(RAD_DRIVE* RAD_DRIVE_ASYNC, const char* DRIVE_NAME, FILE_PRIORITY* FILE_PRIORITY);
 
 #endif
 #endif
