@@ -56,8 +56,8 @@ typedef enum FILE_HANDLE_ENUM
 #else
 #endif 
 
-#ifndef RAD_FILE_STRUCT
-#define RAD_FILE_STRUCT
+#ifndef _RAD_FILE_
+#define _RAD_FILE_
 
 typedef struct RAD_FILE_CALLBACK{};
 typedef struct RAD_CEMENT_LIB
@@ -79,6 +79,8 @@ typedef struct RAD_DRIVE
     };
 };
 
+typedef struct MEM_CARD_INFO;
+
 #endif 
 
 /* THIS IS IN RELATION TO THE GAMECUBE AND WII'S */
@@ -92,6 +94,8 @@ typedef struct RAD_DRIVE
 #define MAX_GC_MEM_CARD_SIZE 8192 // 8MB GC MEM CARD
 #endif
 
+#define FILENAME_MAX 256 const U32
+#define FILEDRIVE_MAX 16 const U32
 
 #endif
 #endif
