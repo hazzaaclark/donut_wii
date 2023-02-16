@@ -45,4 +45,40 @@ typedef enum FILE_HANDLE_ENUM
 };
 
 #endif 
+
+/* A RETOOL OF RADICAL'S FILE SUBSYSTEM TO JUST */
+/* TAKE INTO ACCOUNT THE SCHEMA SURROUDNING THE GC/WII */
+
+#ifndef RAD_FILE_DEFINE
+#define RAD_FILE_DEFINE
+
+#if !defined(RAD_GAMECUBE) && !defined(WII) 
+#else
+#endif 
+
+#ifndef RAD_FILE_STRUCT
+#define RAD_FILE_STRUCT
+
+typedef struct RAD_FILE_CALLBACK{};
+typedef struct RAD_CEMENT_LIB
+{
+    union
+    {
+        RAD_CEMENT_LIB* GET_CEMENT_CALLBACK;
+        typedef RAD_CEMENT_LIB* RAD_CEMENT_COMPLETE_CALLBACK;
+    };
+};
+
+typedef struct RAD_FILE{};
+typedef struct RAD_DRIVE
+{
+    union
+    {
+        RAD_DRIVE* GET_DRIVE_CALLBACK;
+        typedef RAD_DRIVE* RAD_DRIVE_COMPLETE_CALLBACK;
+    };
+};
+
+#endif 
+#endif
 #endif
