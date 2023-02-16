@@ -59,7 +59,13 @@ typedef struct CONSOLE : LOADING
 	typedef bool ADD_FUNCTION(const char* NAME, CONSOLE_FUNCTION* FUNCTION_PTR, U32 MIN_ARGS, U32 MAX_ARGS);
 	typedef bool ADD_FUNCTION(const char* NAME, CONSOLE_BOOL_FUNCTION* FUNCTION_PTR, U32 MIN_ARGS, U32 MAX_ARGS);
 	typedef bool ADD_ALIAS(const char* NAME, const char* FUNCTION_NAME, int argc, char** argv[]);
+	typedef void(*EXECUTE_CALLBACK_SYNC)(const char* FILE_NAME);
+};
 
+typedef struct SCRIPT_CALLBACK : CONSOLE
+{
+	virtual void ON_EXECUTE(void* USER_DATA);
+	typedef void(*EXECUTE)(const char* FILE_NAME, SCRIPT_CALLBACK* CALLBACK, void* USER_DATA);
 };
 
 #endif
