@@ -46,12 +46,18 @@ typedef struct DEBUG_CONSOLE_CALLBACK;
 
 typedef struct CONSOLE : LOADING
 {
-	static CONSOLE* CREATE_INSTANCE();
-	static CONSOLE* GET_INSTANCE();
-	static CONSOLE* DESTROY_INSTANCE(void);
+	typedef CONSOLE* CREATE_INSTANCE();
+	typedef CONSOLE* GET_INSTANCE();
+	typedef CONSOLE* DESTROY_INSTANCE(void);
+
+	typedef void(*CONSOLE_FUNCTION)(int argc, char** argv);
+	typedef void(*CONSOLE_BOOL_FUNCTION)(int argc, char** argv);
+	typedef bool ADD_FUNCTION(const char* NAME, CONSOLE_FUNCTION* FUNCTION_PTR, U32 MIN_ARGS, U32 MAX_ARGS);
+	typedef bool ADD_FUNCTION(const char* NAME, CONSOLE_BOOL_FUNCTION* FUNCTION_PTR, U32 MIN_ARGS, U32 MAX_ARGS);
+	typedef bool ADD_ALIAS(const char* NAME, const char* FUNCTION_NAME, int argc, char** argv[]);
+
 };
 
-typedef void(*CONSOLE_FUNCTION)(int argc, char** argv);
 
 #endif
 
