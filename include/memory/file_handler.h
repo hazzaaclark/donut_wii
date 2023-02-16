@@ -87,6 +87,8 @@ typedef struct RAD_DRIVE
 
 #if defined RAD_GAMECUBE && WII
 #define OPTIMAL_MEMORY_ALIGNMENT 32
+#else
+#define MAX_FILE_SECTOR_SIZE 2048 // MAX AMOUNT OF L2 CACHE VIA POWER PC'S ISA
 #endif
 
 
