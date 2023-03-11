@@ -23,10 +23,30 @@
 #include "common.h"
 
 typedef struct RAD_DRIVE; // MORE PREPRIATORY RADICAL STUFF
-typedef struct RAD_DRIVE_ERROR_CALLBACK{};
+typedef struct RAD_DRIVE_ERROR_CALLBACK {};
 
 typedef struct WII : RAD_DRIVE_ERROR_CALLBACK
 {
+	typedef void(*WII_INIT)(void);
+	typedef void(*WII_SHUTDOWN)(void);
+	typedef void(*WII_RESET)(void);
+
+	/* THIS IS IN ACCORDANCE WITH THE PRE-DEFINED */
+	/* SPLASH ENUM FROM THE SHAR SOURCE */
+
+	typedef enum SPLASH
+	{
+		LICENSE,
+		ERROR,
+		FADE
+	};
+
+	typedef enum ERROR_SPLASH_STATE
+	{
+		NONE,
+		CONTROLLER,
+		P3D
+	};
 
 };
 
