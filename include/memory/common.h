@@ -25,6 +25,7 @@ typedef uint8_t U8;
 typedef uint16_t U16;
 typedef uint32_t U32;
 typedef uint64_t U64;
+typedef size_t UNK;
 
 #endif 
 
@@ -36,16 +37,26 @@ typedef int16_t S16;
 typedef int32_t S32;
 typedef int64_t S64;
 
-#endif 
+#endif
+
+#ifndef FLOATING_POINT
+#define FLOATING_POINT
+
+typedef float F32;
+typedef double F64;
+typedef volatile float VF32;
+typedef volatile double VF64;
+
+#endif
 
 #ifndef MEMORY_UTILS
 #define MEMORY_UTILS
 
 typedef struct MEMORY_ALLOCATOR;
 typedef void(*MEMORY_INIT);
-typedef float FREE_MEMORY(MEMORY_ALLOCATOR* ALLOC);
-typedef size_t GET_FREE_MEMORY_PROF();
-typedef size_t GET_LARGEST_FREE_BLOCK();
+typedef F32 FREE_MEMORY(MEMORY_ALLOCATOR ALLOC);
+typedef UNK GET_FREE_MEMORY_PROF();
+typedef UNK GET_LARGEST_FREE_BLOCK();
 
 #endif 
 
