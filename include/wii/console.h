@@ -21,6 +21,7 @@
 
 /* NESTED INCLUDES */
 
+#include "common.h"
 #include "shar_memory.h"
 #include "console_memory.h"
 #include "loading_manager.h"
@@ -56,11 +57,11 @@ typedef struct CONSOLE : LOADING
 
 	typedef void(*CONSOLE_FUNCTION)(int argc, char** argv);
 	typedef void(*CONSOLE_BOOL_FUNCTION)(int argc, char** argv);
-	typedef bool ADD_FUNCTION(const char* NAME, CONSOLE_FUNCTION* FUNCTION_PTR, U32 MIN_ARGS, U32 MAX_ARGS);
-	typedef bool ADD_FUNCTION(const char* NAME, CONSOLE_BOOL_FUNCTION* FUNCTION_PTR, U32 MIN_ARGS, U32 MAX_ARGS);
-	typedef bool ADD_ALIAS(const char* NAME, const char* FUNCTION_NAME, int argc, char** argv[]);
-	typedef void(*EXECUTE_CALLBACK_SYNC)(const char* FILE_NAME);
-	typedef bool EVALUATE_BUFFER(const char* STRING, const char* SOURCE_NAME);
+	typedef bool ADD_FUNCTION(const UNK_8* NAME, CONSOLE_FUNCTION* FUNCTION_PTR, U32 MIN_ARGS, U32 MAX_ARGS);
+	typedef bool ADD_FUNCTION(const UNK_8* NAME, CONSOLE_BOOL_FUNCTION* FUNCTION_PTR, U32 MIN_ARGS, U32 MAX_ARGS);
+	typedef bool ADD_ALIAS(const UNK_8* NAME, const UNK_8* FUNCTION_NAME, int argc, char** argv[]);
+	typedef void(*EXECUTE_CALLBACK_SYNC)(const UNK_8* FILE_NAME);
+	typedef bool EVALUATE_BUFFER(const UNK_8* STRING, const UNK_8* SOURCE_NAME);
 };
 
 typedef enum MAX_PROC
@@ -79,7 +80,7 @@ typedef enum MAX_PROC
 typedef struct SCRIPT_CALLBACK : CONSOLE
 {
 	virtual void ON_EXECUTE(void* USER_DATA);
-	typedef void(*EXECUTE)(const char* FILE_NAME, SCRIPT_CALLBACK* CALLBACK, void* USER_DATA);
+	typedef void(*EXECUTE)(const UNK_8* FILE_NAME, SCRIPT_CALLBACK* CALLBACK, void* USER_DATA);
 };
 
 /* CREATE A UNION STRUCTURE TO EVOKE */
@@ -107,7 +108,7 @@ typedef struct FUNCTION_UNISON : CONSOLE
 
 typedef void(*ADD_DEBUG)();
 typedef void(*SET_DEBUG)();
-typedef int DEBUG_LINE;
+typedef U32 DEBUG_LINE;
 
 DEBUG_CONSOLE* RAD_DEBUG();
 DEBUG_CONSOLE_CALLBACK* RAD_CALLBACK();
